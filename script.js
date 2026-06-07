@@ -14,7 +14,7 @@ const products = [
     category: "cestas",
     name: "Cesta Doce Paix\u00e3o",
     description: "1 Doritos, 1 Pringles, 1 Pling Show, 1 Ferrero Rocher, 1 Kinder Bueno, 1 Suflair, 1 Bis Xtra, 1 KitKat, 1 Trento, 1 Mentos, 1 Nutella, 1 5Star e 2 Ouro Branco. Uma sele\u00e7\u00e3o especial de sabores para surpreender quem voc\u00ea ama.",
-    price: 195,
+    price: 185,
     image: "assets/cesta-doce-paixao.jpg",
   },
   {
