@@ -348,8 +348,31 @@ h2 {
 .products-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-columns: calc((100% - 44px) / 3);
+  grid-auto-flow: column;
+  grid-template-rows: 1fr;
   gap: 22px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 4px 2px 24px;
+  scroll-padding-inline: 2px;
+  scroll-snap-type: inline mandatory;
+  scrollbar-color: var(--primary-dark) var(--blush);
+  scrollbar-width: thin;
+}
+
+.products-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.products-grid::-webkit-scrollbar-track {
+  border-radius: var(--radius);
+  background: var(--blush);
+}
+
+.products-grid::-webkit-scrollbar-thumb {
+  border-radius: var(--radius);
+  background: var(--primary-dark);
 }
 
 .product-card {
@@ -361,6 +384,7 @@ h2 {
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: var(--shadow);
+  scroll-snap-align: start;
   backdrop-filter: blur(8px);
   transition:
     transform 180ms ease,
@@ -616,7 +640,7 @@ h2 {
   }
 
   .products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: calc((100% - 22px) / 2);
   }
 
   .cart-layout {
@@ -630,14 +654,14 @@ h2 {
 
 @media (max-width: 680px) {
   :root {
-    --header-height: 146px;
+    --header-height: 162px;
   }
 
   .site-header {
     align-items: flex-start;
     flex-direction: column;
-    gap: 8px;
-    padding: 8px 16px 10px;
+    gap: 2px;
+    padding: 3px 12px 8px;
   }
 
   .campaign-bar {
@@ -651,9 +675,17 @@ h2 {
     display: none;
   }
 
+  .brand {
+    align-self: flex-start;
+    min-width: 0;
+    margin-left: -8px;
+  }
+
   .brand-logo {
-    width: 184px;
-    height: 70px;
+    width: 126px;
+    max-width: none;
+    height: 108px;
+    object-position: left center;
   }
 
   .main-nav {
@@ -727,7 +759,10 @@ h2 {
   }
 
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-auto-columns: min(86vw, 340px);
+    gap: 14px;
+    margin-right: -16px;
+    padding-right: 16px;
   }
 
   .product-footer {
