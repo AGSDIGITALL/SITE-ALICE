@@ -177,6 +177,14 @@ function renderCart() {
             <span>Subtotal</span>
             <strong>${formatPrice(subtotal)}</strong>
           </div>
+          <button
+            class="remove-item-button"
+            type="button"
+            data-remove-product-id="${product.id}"
+            aria-label="Excluir ${product.name} do carrinho"
+          >
+            Excluir
+          </button>
         </article>
       `;
     })
@@ -198,6 +206,17 @@ function addToCart(productId) {
 
   renderCart();
   document.getElementById("carrinho").scrollIntoView({ behavior: "smooth" });
+}
+
+function removeFromCart(productId) {
+  const itemIndex = cart.findIndex((item) => item.productId === productId);
+
+  if (itemIndex === -1) {
+    return;
+  }
+
+  cart.splice(itemIndex, 1);
+  renderCart();
 }
 
 function createWhatsAppUrl(message) {
@@ -229,6 +248,16 @@ productGrids.forEach((grid) => {
 
     addToCart(Number(button.dataset.productId));
   });
+});
+
+cartItems.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-remove-product-id]");
+
+  if (!button) {
+    return;
+  }
+
+  removeFromCart(Number(button.dataset.removeProductId));
 });
 
 addMoreButton.addEventListener("click", () => {

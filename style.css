@@ -526,7 +526,7 @@ h2 {
 
 .cart-item {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(92px, 0.65fr));
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(92px, 0.65fr)) auto;
   gap: 16px;
   align-items: center;
   padding: 18px;
@@ -553,6 +553,30 @@ h2 {
 .cart-detail strong {
   color: var(--ink);
   font-size: 1rem;
+}
+
+.remove-item-button {
+  min-height: 42px;
+  padding: 0 14px;
+  color: var(--primary-dark);
+  border: 1px solid rgba(148, 26, 53, 0.34);
+  border-radius: var(--radius);
+  background: var(--white);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.remove-item-button:hover,
+.remove-item-button:focus-visible {
+  color: var(--white);
+  border-color: var(--primary-dark);
+  background: var(--primary-dark);
 }
 
 .empty-cart {
